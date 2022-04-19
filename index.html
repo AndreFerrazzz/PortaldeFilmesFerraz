@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS 5.1.3 - 04/2022 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Fontawesome 6.1.1 - 04/2022 -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title>Portal de Filmes</title>
+</head>
+
+<body>
+    <header class="header">
+        <!-- Barra de navegação superior -->
+        <nav class="navbar navbar-expand-lg navbar-black bg-black">
+            <div class="container-fluid">
+                <img class="navbar-brand" src="data:image/png;base64,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" alt="logo">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                       
+                        <li class="nav-item">
+                           
+                            <a class="nav-link active" aria-current="page" href="#lancamentos">Lançamentos</a>
+                        </li>
+                        <li class="nav-item">
+                           
+                            <a class="nav-link" href="#destaques">Em destaque</a>
+                        </li>
+                        <li class="nav-item">
+                          
+                            <a class="nav-link" href="#avaliacoes">Avaliações</a>
+                        </li>
+                        <li class="nav-item">
+                            
+                            <a class="nav-link" href="#entrevistas">Entrevistas & Making of</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- href temporario -->
+                            <a class="nav-link" href="#novidades">Novidades</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        
+                        <input class="form-control me-2" type="search" placeholder="Pesquisar filme"
+                            aria-label="Search">
+                        <button class="btn btn-outline-light" type="submit">Pesquisar</button>
+                    
+
+                    </form>
+                </div>
+            </div>
+        </nav>
+
+        
+    </header>
+
+    <main>
+        <!-- Bloco de Lançamento -->
+        <div class="container main">
+            <h2 class="lancamentos" id="lancamentos">Lançamentos</h2>
+        </div>
+        <div class="container">
+            <div class="row">
+               <!--Lançamentos INCIO -->
+        <div id="carouselExampleIndicators" class="carousel slide " data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                    aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                    aria-label="Slide 3"></button>
+
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                    aria-label="Slide 4"></button>
+            </div>
+
+
+            <div class="carousel-inner">
+
+                <!--Filme 1 INCÍO -->
+                <div class="carousel-item active">
+
+
+                    <div class="row">
+                       
+
+                        <div class="col-6 link_youtube1">
+
+
+                            <iframe width="550" height="350" src="https://www.youtube.com/embed/4DIwnXAimL4"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+
+                        </div>
+                        <div class="col-6 texto">
+
+                            <h1> <strong>500 Days of Summer</strong> </h1>
+                            <p> <strong>Sinopse: </strong>Um romântico escritor se surpreende quando sua namorada Summer termina o namoro repentinamente. Com isso, ele relembra vários momentos dos 500 dias que passaram juntos para tentar descobrir onde seu caso de amor se perdeu e vai redescobrindo suas verdadeiras paixões.</p>
+
+                            <p class="inline"> <strong>Diretor:</strong> Mark Webb &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Roteiro:</strong>
+                                Scott Neustadter &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <strong>Estreia: </strong>2009
+                            </p>
+
+                            <p> <strong>Elenco:</strong> Joseph Gordon-Levitt
+                                 |  Zooey Deschanel
+                            </p>
+
+                            <p>Avaliação</p>
+                            <p> ★ ★ ★ ★ ★</p>
+
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="carousel-item ">
+
+                    <div class="row">
+                        
+
+                        <div class="col-6 link_youtube1">
+
+
+                            <iframe width="550" height="350" src="https://www.youtube.com/embed/hcSHzdQuoRw"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+
+                        </div>
+                        <div class="col-6 texto">
+
+                            <h1> <strong>American Psycho</strong> </h1>
+                            <p> <strong>Sinopse: </strong>Em Nova York, em 1987, o belo jovem profissional Patrick Bateman tem uma segunda vida como um horrível assassino em série durante a noite. O elenco é formado pelo detetive, a noiva, a amante, o colega de trabalho e a secretária. Esta é uma comédia de humor seco que examina os elementos que transformam um homem em um monstro.
+                            </p>
+
+                            <p class="inline"> <strong>Diretor:</strong> Mary Harron &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Roteiro: </strong>
+                                Guinevere Turner &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <strong>Estreia: </strong>2012
+                            </p>
+
+                            <p> <strong>Elenco:</strong> Christian Bale |
+                                Willem Dafoe |
+                                Jared Leto |
+                                Josh Lucas |
+                            </p>
+
+                            <p>Avaliação</p>
+                            <p> ★ ★ ★ ★ ☆</p>
+
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-item ">
+
+                    <div class="row">
+                      
+
+                        <div class="col-6 link_youtube1">
+
+                            <iframe width="550" height="350" src="https://www.youtube.com/embed/kFwGmQIe-rU"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+
+                        </div>
+                        <div class="col-6 texto">
+
+                            <h1> <strong>Projeto X</strong> </h1>
+                            <p> <strong>Sinopse: </strong>Três amigos de colégio planejam uma festa inesquecível que entrará para a história na tentativa de ficarem famosos. A notícia se espalha rapidamente e tudo foge ao controle quando os imprevistos começam a acontecer.
+                            </p>
+
+                            <p class="inline"> <strong>Diretor:</strong> Nima Nourizadeh &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>Roteiro:
+                                </strong>
+                                Matt Drake
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <strong>Estreia: </strong>2012
+                            </p>
+
+                            <p> <strong>Elenco:</strong> 	Thomas Mann
+                                Oliver Cooper | 
+                                Jonathan Daniel Brown | 
+                                Kirby Bliss Blanton | 
+                                Miles Teller | 
+                                Vitor Leonardo 
+                            </p>
+
+                            <p>Avaliação</p>
+                            <p> ★ ★ ★ ☆ ☆</p>
+
+                        </div>
+                    </div>
+                </div>
+
+              
+                <div class="carousel-item ">
+
+                    <div class="row">
+                        
+
+                        <div class="col-6 link_youtube1">
+
+                            <iframe width="550" height="350" src="https://www.youtube.com/embed/qtRKdVHc-cE"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+
+                        </div>
+                        <div class="col-6 texto">
+
+                            <h1> <strong>Fight Club</strong> </h1>
+                            <p> <strong>Sinopse: </strong>Um homem deprimido que sofre de insônia conhece um estranho vendedor chamado Tyler Durden e se vê morando em uma casa suja depois que seu perfeito apartamento é destruído. A dupla forma um clube com regras rígidas onde homens lutam. A parceria perfeita é comprometida quando uma mulher, Marla, atrai a atenção de Tyler.
+                            </p>
+
+                            <p class="inline"> <strong>Diretor:</strong> 	David Fincher&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <strong>Roteiro:
+                                </strong>
+                                Jim Uhls &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <strong>Estreia: </strong>1999
+                            </p>
+
+                            <p> <strong>Elenco:</strong> 	Brad Pitt |
+                                Edward Norton |
+                                Helena Bonham Carter |
+                                Meat Loaf |
+                                Jared Leto |
+                                
+                            </p>
+
+                            <p>Avaliação</p>
+                            <p> ★ ★ ★ ★ ★</p>
+
+                        </div>
+                    </div>
+                </div>
+
+             
+
+
+
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+        </div>
+                                  
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2 Filme.... , replicar o filme 1 4x-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloco de Destaque -->
+        <div class="container">
+            <div class="row">
+                <div class="col-6">
+                    <h2 class="destaques" id="destaques">Em destaque</h2>
+                </div>
+                <div class="col-6">
+                    <div class="dropdown" style="text-align: right;">
+                        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Categoria: TODOS
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">tema</a></li>
+                            <li><a class="dropdown-item" href="#">tema</a></li>
+                            <li><a class="dropdown-item" href="#">tema</a></li>
+                            <li><a class="dropdown-item" href="#">tema</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row destaques">
+                <div class="col-3">
+                    <div class="card">
+                        <img src="https://upload.wikimedia.org/wikipedia/pt/0/0c/American_Psycho.png" class="card-img-top" alt="filme1">
+                        <div class="card-body">
+                            <p class="card-text"><b><strong>American Psycho</strong></b></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card">
+                        <img  src="https://play-lh.googleusercontent.com/FDJ7M1txJtoZvj9KWSlg_4VuCuN76isjlgEBwl3Cue_3gKJUTf_ClqT4CGF3qRFnx_XI" class="card-img-top" alt="filme1">
+                        <div class="card-body">
+                            <p class="card-text"><b><strong>Projeto X</strong></b></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card">
+                        <img h src="data:image/jpeg;base64,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" class="card-img-top" alt="filme1">
+                        <div class="card-body">
+                            <p class="card-text"><b><strong>Fight Club</strong></b></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="card" widht="100%">
+                        <img class="card-img-top"   src="https://m.media-amazon.com/images/I/91m2MB2lYFL._AC_SL1500_.jpg">
+                        <div class="card-body">
+                            <p class="card-text"><b><strong>The Wolf of Wall Street</strong></b></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="text-align: right; margin-top: 10px;">
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" class="btn btn-secondary btn-sm">+ Carregar mais filmes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloco de Avaliação pelos Usuários -->
+        <div class="container">
+            <h2 class="avaliacoes" id="avaliacoes">Últimas avaliações</h2>
+        </div>
+        <div class="container">
+            <div class="row avaliacoes">
+                <div class="col-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="profile-header-container">
+                                    <img class="img-circle" src="https://i.pinimg.com/564x/3b/e0/b3/3be0b3eb9ce13f9c9c1fcd5a1014ca46.jpg" height="100%" width="100%" />
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <h6><strong>Alexandre Cabanel</strong></h6>
+                                <p><b>Avaliação: 3/5</b></p>
+                                <p>★★★☆☆ - O filme é de fato muito interessante, mas acho que podiam ter desenvolvido melhor o final, particulamente sou um fã de romances cliches porém infelizmente não é o caso, valeu a tentativa...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="profile-header-container">
+                                    <img class="img-circle" src="https://i.pinimg.com/564x/07/16/f6/0716f6591ef2b7c8f18788a0f2090e69.jpg" height="200%" width="100%" />
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <h6><strong>Michel Angelo</strong></h6>
+                                <p><b>Avaliação: 5/5</b> </p>
+                                <p>★★★★★ - Meu Filme preferido, é uma obra de arte, tratando das expectativas que muitos criam sobre os relacionamentos amorosos e das crenças que carregamos sobre o amor, e o quanto tudo isso nos influencia ao longo da nossa existência.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="profile-header-container">
+                                    <img class="img-circle" src="https://i.pinimg.com/564x/70/48/0c/70480cbf33c1c27fccffc24f40f539c4.jpg" height="100%" width="100%" />
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <h6><strong>Helena Fisher</strong></h6>
+                                <p><b>Avaliação: 4/5</b> </p>
+                                <p>★★★★☆ - I Love the Smiths!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="text-align: right; margin-top: 10px;">
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" class="btn btn-secondary btn-sm">+ Carregar mais avaliações</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloco de Entrevistas & Making of -->
+        <div class="container">
+            <h2 class="entrevistas" id="entrevistas">Entrevistas & Making of</h2>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <iframe width="400px%" height="300px" src="https://www.youtube.com/embed/PqzZNXA2CV4"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="col-4">
+                    <iframe width="400px" height="300px" src="https://www.youtube.com/embed/JHVdjswG5tM"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+                <div class="col-4">
+                    <iframe width="400px" height="300px" src="https://www.youtube.com/embed/Ngz-Ch94V44"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-4">
+                    <p><b>Filme:</b> Fight Club<br>
+                        <b>Diretor:</b> David Fincher<br>
+                        <b>Roteiro:</b> Jim Uhls <br>
+                        <b>Estreia:</b> 15 de Outubro de 1999
+                        </b> 
+                    </p>
+                </div>
+                <div class="col-4">
+                    <p><b>Filme:</b> American Psycho<br>
+                        <b>Diretor:</b> Mary Harron<br>
+                        <b>Roteiro:</b> Guinevere Turner<br>
+                        <b>Estreia:</b> 21 de Janeiro de 2000
+                    </p>
+                    </p>
+                </div>
+                <div class="col-4">
+                    <p><b>Filme:</b> The Wolf of Wall Street<br>
+                        <b>Diretor:</b> Martin Scorsese<br>
+                        <b>Roteiro:</b> Terence Winter<br>
+                            Estreia:</b> 25 de Dezembro de 2013
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="container" style="text-align: right; margin-top: 10px;">
+            <div class="row">
+                <div class="col-12">
+                    <button type="button" class="btn btn-secondary btn-sm">+ Carregar mais filmes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bloco de Entrevistas & Making of -->
+        <div class="container">
+            <div class="row">
+                <div class="col-8">
+                    <h2 class="novidades" id="novidades">Novidades</h2>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-11 col-md-4">
+                                <img height="100%" width="100%" src="https://conteudo.imguol.com.br/c/entretenimento/fe/2018/01/16/james-alex-lawther-e-alyssa-jessica-barden-em-cena-de-the-end-of-the-fing-world-1516129841308_v2_4x3.jpg" alt="imagem1">
+                            </div>
+                            <div class="col-xs-12 col-12 col-md-6">
+                                <h5><strong>The End of the F***ing World já tem segundo filme em produção.</strong>
+                                </h5>
+                                <p>Depois de mais de 4 anos de espera os fãs podem comemorar, James e Alyssa estão de volta, o Filme tem previsão de estreia em 25 de setembro de 2023.
+                                    <hr>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" style="margin-top: 10px;">
+                        <div class="row">
+                            <div class="ol-xs-12 col-11 col-md-4">
+                                <img height="100%" width="100%" src="https://midias.correiobraziliense.com.br/_midias/jpg/2021/01/19/766x527/1_peaky_blinders-6488846.jpg?20211122123853?20211122123853" alt="imagem1">
+                            </div>
+                            <div class="col-xs-12 col-12 col-md-6">
+                                <h5><strong>Peaky Blinders vai ganhar Filme!</strong>
+                                </h5>
+                                <p>Após o grande sucesso da série, o primeiro filme dos Shelbys tem data prevista para chegar aos cinemas em Janeiro de 2024.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container" style="margin-top: 10px; margin-bottom: 15px;">
+                        <div class="row">
+                            <div class="ol-xs-12 col-11 col-md-4">
+                                <img height="100%" width="100%" src="https://img.estadao.com.br/thumbs/640/resources/jpg/2/5/1502910543352.jpg" alt="imagem1">
+                            </div>
+                            <div class="col-xs-12 col-12 col-md-6">
+                                <h5><strong>Cidade de Deus tem data definida pra estreia na Netflix.</strong>
+                                </h5>
+                                <p>O fenômeno brasileiro de Bráulio Mantovani chegará a plataforma de streaming no próximo dia 6.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco de Sobre -->
+                <div class="col-4">
+                    <h2 class="sobree" id="sobree">Sobre</h2>
+                    <p>Esse é um Projeto totalmente com fins educacionais, desenvolvido por André Ferraz, na disciplina de Desenvolvimento de interfaces web (1º Período ciência da computação da PucMG) com a temática de um portal de filmes funcional.
+
+                    </p>
+
+                    <h2 class="editorial" id="editorial">Editorial</h2>
+                    <p><strong>Redação:</strong> André Ferraz</p>
+                    <p><strong>Pesquisa:</strong> André Ferraz</p>
+                    <p><strong>Gerente Geral:</strong> André Ferraz</p>
+
+                    <h3 class="socialmedias" id="socialmedias">Social Medias</h3><br>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img height="35px" src="https://www.pngmart.com/files/13/Insta-Logo-PNG-Pic.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img height= "35px" src="https://freepikpsd.com/file/2019/10/twitter-logo-white-png-4-Transparent-Images-Free.png" alt="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <img height="35px" src="https://library.kissclipart.com/20190911/ppe/kissclipart-facebook-icon-facebook-logo-icon-fb-icon-9a876851aff0cd9c.png" alt="">
+
+                
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            <p class="footertext">© 2022 Copyright: André Ferraz -
+                <b>ICEI PUC MINAS</b>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap Javascript 2.10 - 04/2022 -->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" 
+        crossorigin="anonymous"></script>-->
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
+        integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
